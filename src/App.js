@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import BasicReactTable from "./BasicReactTable";
+import SortableReactTable from "./SortableReactTable";
+import PaginationReactTable from "./PaginationReactTable";
+import { Route, Routes, BrowserRouter, NavLink } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <BrowserRouter>
+        <NavLink className="link" activeClassName="active" to="/basicTable">
+          React Basic Table
+        </NavLink>
+        <NavLink className="link" activeClassName="active" to="/sortableTable">
+          React Sortable Table
+        </NavLink>
+        <NavLink
+          className="link"
+          activeClassName="active"
+          to="/paginationTable"
         >
-          Learn React
-        </a>
-      </header>
+          React Pagination Table
+        </NavLink>
+        <Routes>
+          <Route path="/basicTable" element={<BasicReactTable />} />
+          <Route path="/sortableTable" element={<SortableReactTable />} />
+          <Route path="/paginationTable" element={<PaginationReactTable />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
